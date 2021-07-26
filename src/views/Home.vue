@@ -13,6 +13,24 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  mounted () {
+    console.log($jsPDF)
+    const doc = new $jsPDF('p', 'pt', 'A3', 'landscape') // eslint-disable-line''
+    console.log(doc.html())
+    doc.html(document.querySelector('.home'), {
+      callback: function (doc) {
+        doc.save('asd.pdf')
+      },
+      x: 10,
+      y: 10
+    })
   }
 }
 </script>
+
+<style>
+.home{
+  text-align: center;
+}
+</style>
